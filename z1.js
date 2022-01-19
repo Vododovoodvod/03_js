@@ -13,4 +13,4 @@ if (x == 1) {
 	}
 }
 
-fullPrice = price * 100 / discount;
+fullPrice = (price * 100) / discount;
