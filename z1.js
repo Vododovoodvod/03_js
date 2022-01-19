@@ -1,4 +1,4 @@
-var firstName, lastName, price, discount, fullPrice, x, y, z, a;
+var firstName, lastName, price, discount, fullPrice, x, a;
 
 firstName = "John";
 lastName = "Doe";
