@@ -54,6 +54,7 @@ function myTimer() {
         //newElement.remove();
         //newElement.setAttribute('class', 'expired');
         newElement.innerText = sec;
+        newElement.classList.remove('blinking');
         newElement.classList.add('expired'); //bolje za koristiti, setAttribute će presnimiti postojeću klasu
         clearInterval(timer);
     }
