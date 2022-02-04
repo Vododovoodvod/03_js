@@ -33,8 +33,9 @@ setTimeout(function() {
 }, 4000)
 */
 
-var sec = 10;
+//var sec = 10;
 var appElement = document.getElementById("app");
+var sec = parseInt(appElement.dataset.startTime);
 var newElement = document.createElement('div');
 newElement.innerText = sec;
 appElement.appendChild(newElement);
@@ -43,11 +44,17 @@ var timer = setInterval(myTimer, 1000);
 
 function myTimer() {
     sec--;
-    if (sec>=0){
+    if (sec == 10){
+        newElement.classList.add('blinking');
+    }
+    if (sec>0){
         newElement.innerText = sec;
     }
     else{
-        newElement.remove();
+        //newElement.remove();
+        //newElement.setAttribute('class', 'expired');
+        newElement.innerText = sec;
+        newElement.classList.add('expired'); //bolje za koristiti, setAttribute će presnimiti postojeću klasu
         clearInterval(timer);
     }
 }
