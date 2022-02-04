@@ -40,7 +40,25 @@ var newElement = document.createElement('div');
 newElement.innerText = sec;
 appElement.appendChild(newElement);
 
-var timer = setInterval(myTimer, 1000);
+//dohvačamo computed veličinu fonta
+var timerComputedStyle = getComputedStyle(newElement);
+var defaultFontSize = parseInt(timerComputedStyle.fontSize)
+var fontSize = defaultFontSize;
+
+var timerId = null;
+
+var startButton = document.querySelector('[data-action-start]');
+startButton.addEventListener('click',function() {
+    clearInterval(timerId)
+    sec = parseInt(appElement.dataset.startTime);
+    newElement.innerText = sec;
+    fontSize = defaultFontSize;
+    newElement.style.fontSize = fontSize + 'px';
+    newElement.classList.remove('blinking');
+    newElement.classList.remove('expired');
+    newElement.innerText = sec;
+    timerId = setInterval(myTimer, 1000);
+});
 
 function myTimer() {
     sec--;
@@ -49,6 +67,8 @@ function myTimer() {
     }
     if (sec>0){
         newElement.innerText = sec;
+        fontSize += 4;
+        newElement.style.fontSize = fontSize + 'px';
     }
     else{
         //newElement.remove();
@@ -56,6 +76,7 @@ function myTimer() {
         newElement.innerText = sec;
         newElement.classList.remove('blinking');
         newElement.classList.add('expired'); //bolje za koristiti, setAttribute će presnimiti postojeću klasu
-        clearInterval(timer);
+        clearInterval(timerId);
+        timerId = null;
     }
 }
