@@ -46,3 +46,5 @@ const coinTossPromise = new Promise((resolve, reject) => {
 Promise.resolve(coinTossPromise)
 .then(() => console.log("Successful coin toss!"))
 .catch(() => console.log("Unsuccessful coin toss!"));
+
+//git test
