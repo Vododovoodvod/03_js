@@ -1,5 +1,6 @@
 const productListElement = document.getElementById("product-list");
 const cartItemListElement = document.getElementById("cart-item-list");
+const cartProductNumbers = document.getElementById("cart-no");
 
 class Product {
   constructor(barcode, image, name) {
@@ -50,6 +51,8 @@ class Cart {
   }
 
   render() {
+    cartProductNumbers.innerText = "Cart (" + this.items.length + ")";
+
     for(let i = 0; i < this.items.length; i++) {
       const currentItem = this.items[i];
 
